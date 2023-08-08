@@ -303,11 +303,9 @@ function loadingProgressBar() {
 
 // function called on replay button (leaderboard) clicked
 function replayEvent() {
-
-    gameInstance.SendMessage('SoundManager', 'DisableSoundOnAds', 'off');
-
     _triggerReason = 'replay'
     if (!is_replay_noFill) {
+        gameInstance.SendMessage('SoundManager', 'DisableSoundOnAds', 'off');
         window.GlanceGamingAdInterface.showRewarededAd(replayInstance);
     } else {
         runOnAdClosed();
