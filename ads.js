@@ -161,7 +161,7 @@ function GameStartsEvent() {
 
 function GameReplayEvent(score, highscore) {
     window.GlanceGamingAdInterface.showRewarededAd(replayInstance);
-
+    gameInstance.SendMessage('SoundManager', 'EnableSoundOnAds', 'on');
     sendCustomAnalyticsEvent('game_replay', {
         //score: score,
         //highScore: highscore,
@@ -257,7 +257,7 @@ function runOnAdClosed() {
         rewardInstance = window.GlanceGamingAdInterface.loadRewardedAd(rewardObj, rewardedCallbacks);
     }
 
-    enableSound(true);
+    gameInstance.SendMessage('SoundManager', 'DisableSoundOnAds', 'off');
     window.focus();
 }
 
@@ -305,7 +305,6 @@ function loadingProgressBar() {
 function replayEvent() {
     _triggerReason = 'replay'
     if (!is_replay_noFill) {
-        enableSound(false);
         window.GlanceGamingAdInterface.showRewarededAd(replayInstance);
     } else {
         runOnAdClosed();
