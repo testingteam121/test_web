@@ -161,7 +161,8 @@ function GameStartsEvent() {
 
 function GameReplayEvent(score, highscore) {
     window.GlanceGamingAdInterface.showRewarededAd(replayInstance);
-    gameInstance.SendMessage('SoundManager', 'EnableSoundOnAds', 'on');
+    gameInstance.SendMessage('SoundManager', 'DisableSoundOnAds', 'off');
+  
     sendCustomAnalyticsEvent('game_replay', {
         //score: score,
         //highScore: highscore,
@@ -257,7 +258,7 @@ function runOnAdClosed() {
         rewardInstance = window.GlanceGamingAdInterface.loadRewardedAd(rewardObj, rewardedCallbacks);
     }
 
-    gameInstance.SendMessage('SoundManager', 'DisableSoundOnAds', 'off');
+    gameInstance.SendMessage('SoundManager', 'EnableSoundOnAds', 'on');
     window.focus();
 }
 
