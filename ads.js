@@ -257,7 +257,7 @@ function runOnAdClosed() {
         rewardInstance = window.GlanceGamingAdInterface.loadRewardedAd(rewardObj, rewardedCallbacks);
     }
 
-    gameInstance.SendMessage('SoundManager', 'EnableSoundOnAds', 'on');
+    enableSound(true);
     window.focus();
 }
 
@@ -305,7 +305,7 @@ function loadingProgressBar() {
 function replayEvent() {
     _triggerReason = 'replay'
     if (!is_replay_noFill) {
-        gameInstance.SendMessage('SoundManager', 'DisableSoundOnAds', 'off');
+        enableSound(false);
         window.GlanceGamingAdInterface.showRewarededAd(replayInstance);
     } else {
         runOnAdClosed();
